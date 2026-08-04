@@ -124,6 +124,7 @@ function Navbar() {
     { label: 'Tjenester', href: '#sluzby' },
     { label: 'Slik jobber vi', href: '#how-we-work' },
     { label: 'Priser', href: '#cenik' },
+    { label: 'Karriere', href: '#jobb' },
     { label: 'Kontakt', href: '#kontakt' },
   ]
   return (
@@ -837,8 +838,8 @@ export default function App() {
       <Intro />
       <Services />
       <About />
-      <Pricing />
       <Jobs />
+      <Pricing />
       <FinalCTA />
       <Footer />
       <CookieBanner />
