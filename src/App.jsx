@@ -120,11 +120,11 @@ function Navbar() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
   const links = [
-    { label: 'About', href: '#o-nas' },
-    { label: 'Services', href: '#sluzby' },
-    { label: 'How we work', href: '#how-we-work' },
-    { label: 'Pricing', href: '#cenik' },
-    { label: 'Contact', href: '#kontakt' },
+    { label: 'Om oss', href: '#o-nas' },
+    { label: 'Tjenester', href: '#sluzby' },
+    { label: 'Slik jobber vi', href: '#how-we-work' },
+    { label: 'Priser', href: '#cenik' },
+    { label: 'Kontakt', href: '#kontakt' },
   ]
   return (
     <header style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50, padding: '1.25rem 0.5rem 1.25rem', pointerEvents: 'none', display: 'flex', justifyContent: 'center' }}>
@@ -159,7 +159,7 @@ function Navbar() {
             >{l.label}</a>
           ))}
         </nav>
-        <div className="hidden lg:block" style={{ marginLeft: 'auto' }}><MeridianBtn href="#kontakt" noArrow>Contact us</MeridianBtn></div>
+        <div className="hidden lg:block" style={{ marginLeft: 'auto' }}><MeridianBtn href="#kontakt" noArrow>Kontakt oss</MeridianBtn></div>
         <button className="burger-btn" onClick={() => setMenuOpen(v => !v)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px 6px', flexDirection: 'column', gap: 9, display: 'flex' }}>
           <span style={{ display: 'block', width: 28, height: 1, background: CREAM, borderRadius: 2 }} />
           <span style={{ display: 'block', width: 28, height: 1, background: CREAM, borderRadius: 2 }} />
@@ -182,7 +182,7 @@ function Navbar() {
                   onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.65)'}
                 >{l.label}</a>
               ))}
-              <div style={{ marginTop: 32 }}><MeridianBtn href="#kontakt" onClick={() => setMenuOpen(false)}>Contact us</MeridianBtn></div>
+              <div style={{ marginTop: 32 }}><MeridianBtn href="#kontakt" onClick={() => setMenuOpen(false)}>Kontakt oss</MeridianBtn></div>
             </nav>
           </motion.div>
         )}
@@ -209,21 +209,21 @@ function Hero() {
         <div>
           <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="hero-eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: AMBER, display: 'inline-block', flexShrink: 0 }} />
-            <span style={{ fontSize: 11, letterSpacing: '0.09em', textTransform: 'uppercase', fontWeight: 500, color: '#fff' }}>Lead Generation &amp; Sales</span>
+            <span style={{ fontSize: 11, letterSpacing: '0.09em', textTransform: 'uppercase', fontWeight: 500, color: '#fff' }}>Leadgenerering &amp; Salg</span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
             style={{ fontSize: 'clamp(48px,7vw,96px)', color: '#fff', lineHeight: 1.02, margin: 0, letterSpacing: '-0.03em', maxWidth: 680 }}>
-            Built to scale.<br />Ready to perform.
+            Bygget for vekst.<br />Klar til å levere.
           </motion.h1>
         </div>
 
         {/* bottom: description + cta */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.18 }}>
           <p style={{ fontSize: 18, color: '#fff', lineHeight: 1.7, maxWidth: 520, margin: '0 0 24px' }}>
-            Vintas embeds with your business to solve operational bottlenecks, build scalable systems, and deliver a clear path forward — in just 90 days.
+            Vintas integreres i din virksomhet for å løse flaskehalser, bygge skalerbare systemer og skape en klar vei fremover.
           </p>
           <div style={{ marginBottom: 24 }}>
-            <BtnAmber href="#kontakt">Get started today</BtnAmber>
+            <BtnAmber href="#kontakt">Kom i gang i dag</BtnAmber>
           </div>
         </motion.div>
 
@@ -242,9 +242,9 @@ function Hero() {
 /* ─── Stats ─── */
 function Stats() {
   const stats = [
-    { num: '$2.4B', label: 'Client revenue influenced' },
-    { num: '90-day', label: 'Average engagement length' },
-    { num: '94%', label: 'Client retention' },
+    { num: '$2.4B', label: 'Kundeinntekter påvirket' },
+    { num: '90 dager', label: 'Gjennomsnittlig samarbeidsperiode' },
+    { num: '94%', label: 'Kundelojalitet' },
   ]
   return (
     <section style={{ background: CREAM2, padding: '56px 0 80px' }}>
@@ -253,7 +253,7 @@ function Stats() {
           {/* left label */}
           <div className="stats-title" style={{ flex: '0 0 auto', paddingRight: 48, display: 'flex', alignItems: 'center', borderRight: `1px solid rgba(0,0,0,0.12)` }}>
             <h2 style={{ fontSize: 'clamp(22px,2.4vw,32px)', color: DARK, letterSpacing: '-0.02em', lineHeight: 1.2, margin: 0, maxWidth: 220 }}>
-              Results that speak for themselves
+              Resultater som taler for seg selv
             </h2>
           </div>
           {/* stats */}
@@ -289,16 +289,16 @@ function Intro() {
           </FadeLeft>
           <div>
             <FadeLeft delay={0.1}>
-              <Eyebrow>Why Vintas</Eyebrow>
+              <Eyebrow>Hvorfor Vintas</Eyebrow>
               <h2 style={{ fontSize: 'clamp(28px,3.8vw,52px)', fontWeight: 600, letterSpacing: '-0.025em', color: DARK, lineHeight: 1.08, margin: '18px 0 22px' }}>
-                Your partner for business success
+                Din partner for forretningssuksess
               </h2>
             </FadeLeft>
             <FadeUp delay={0.2}>
               <p style={{ fontSize: 15, color: MID, lineHeight: 1.75, margin: '0 0 28px' }}>
-                At Vintas we focus on providing tailor-made solutions to support your growth through quality leads, streamlined operations, and an improved competitive position. In today's competitive environment we bring expertise and innovative solutions to acquire new customers and drive sustainable growth.
+                Hos Vintas fokuserer vi på skreddersydde løsninger som støtter din vekst gjennom kvalitetsleads, effektiviserte prosesser og en styrket konkurranseposisjon. Vi bringer ekspertise og innovative løsninger for å skaffe nye kunder og skape bærekraftig vekst.
               </p>
-              <BtnAmber href="#sluzby">View services</BtnAmber>
+              <BtnAmber href="#sluzby">Se tjenester</BtnAmber>
             </FadeUp>
           </div>
         </div>
@@ -310,33 +310,33 @@ function Intro() {
 /* ─── Services ─── */
 const services = [
   {
-    title: 'Lead Generation',
-    desc: 'Quality contacts for growth. We effectively reach prospects and build a strong business network that converts.',
+    title: 'Leadgenerering',
+    desc: 'Kvalitetskontakter for vekst. Vi når effektivt frem til potensielle kunder og bygger et sterkt forretningsnettverk.',
     img: '/69df7963f4d7107f44bb5647_operations-audit-p-800.avif',
   },
   {
-    title: 'Marketing',
-    desc: 'Increase your visibility and reach the ideal clientele. Targeted strategies ensure you are heard and seen.',
+    title: 'Markedsføring',
+    desc: 'Øk synligheten din og nå den ideelle kundegruppen. Målrettede strategier sørger for at du blir hørt og sett.',
     img: '/69df796357d40d908a185636_systems-design-p-800.avif',
   },
   {
-    title: 'Sales Support',
-    desc: 'Turn prospects into paying customers and maximize the conversions of your sales efforts.',
+    title: 'Salgsstøtte',
+    desc: 'Gjør potensielle kunder til betalende kunder og maksimer konverteringen av salgsinnsatsen din.',
     img: '/69df79634555589136d204df_org-alignment-p-800.avif',
   },
   {
-    title: 'Business Growth',
-    desc: 'Fast and sustainable growth with clearly defined goals. Discover new opportunities and expand your reach.',
+    title: 'Forretningsvekst',
+    desc: 'Rask og bærekraftig vekst med tydelig definerte mål. Oppdag nye muligheter og utvid rekkevidden din.',
     img: '/69df7963f4d7107f44bb5647_operations-audit-p-800.avif',
   },
   {
-    title: 'Customer Engagement',
-    desc: 'Build genuinely strong relationships and continuously strengthen the loyalty of your customers for long-term success.',
+    title: 'Kundeengasjement',
+    desc: 'Bygg ekte sterke relasjoner og styrk lojaliteten til kundene dine kontinuerlig for langsiktig suksess.',
     img: '/69df796357d40d908a185636_systems-design-p-800.avif',
   },
   {
-    title: 'Digital Transformation',
-    desc: 'Leverage the digital world for your business success. Modern technology for better sales and marketing results.',
+    title: 'Digital transformasjon',
+    desc: 'Utnytt den digitale verden for din forretningssuksess. Moderne teknologi for bedre salgs- og markedsresultater.',
     img: '/69df79634555589136d204df_org-alignment-p-800.avif',
   },
 ]
@@ -377,12 +377,12 @@ function Services() {
     <section id="sluzby" className="section-pad" style={{ background: CREAM, padding: '96px 0' }}>
       <div className="inner-pad" style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 28px' }}>
         <FadeUp style={{ marginBottom: 52 }}>
-          <Eyebrow>What we do</Eyebrow>
+          <Eyebrow>Hva vi gjør</Eyebrow>
           <h2 style={{ fontSize: 'clamp(28px,4vw,52px)', fontWeight: 600, letterSpacing: '-0.025em', color: DARK, lineHeight: 1.08, margin: '14px 0 16px', maxWidth: 540 }}>
-            What do we do?
+            Hva gjør vi?
           </h2>
           <p style={{ fontSize: 15, color: MID, lineHeight: 1.75, maxWidth: 560, margin: 0 }}>
-            Vintas specializes in generating quality leads, sales support, and effective social media marketing. Through innovative strategies we help businesses build a strong commercial network and reach new customers with maximum impact.
+            Vintas spesialiserer seg på å generere kvalitetsleads, salgsstøtte og effektiv markedsføring i sosiale medier. Gjennom innovative strategier hjelper vi bedrifter med å bygge et sterkt kommersielt nettverk og nå nye kunder med maksimal gjennomslagskraft.
           </p>
         </FadeUp>
         <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36 }}>
@@ -527,18 +527,18 @@ function About() {
         <div className="split-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }}>
           <div className="how-text">
             <FadeLeft>
-              <Eyebrow>How we work</Eyebrow>
+              <Eyebrow>Slik jobber vi</Eyebrow>
               <h2 style={{ fontSize: 'clamp(28px,3.8vw,52px)', fontWeight: 600, letterSpacing: '-0.025em', color: DARK, lineHeight: 1.08, margin: '18px 0 22px' }}>
-                Committed to your business success
+                Dedikert til din forretningssuksess
               </h2>
             </FadeLeft>
             <FadeUp delay={0.15}>
               <div className="values-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, margin: '0 0 28px' }}>
                 {[
-                  { title: 'Integrity', desc: 'We are committed to honesty and an ethical approach in every collaboration.' },
-                  { title: 'Innovation', desc: 'We constantly seek more efficient paths to your success.' },
-                  { title: 'Results focus', desc: 'Your needs and goals for customer acquisition and growth are our priority.' },
-                  { title: 'Collaboration', desc: 'We believe that together we achieve the best results for your business.' },
+                  { title: 'Integritet', desc: 'Vi er forpliktet til ærlighet og en etisk tilnærming i hvert samarbeid.' },
+                  { title: 'Innovasjon', desc: 'Vi søker stadig mer effektive veier til din suksess.' },
+                  { title: 'Resultatorientering', desc: 'Dine behov og mål for kundetilgang og vekst er vår prioritet.' },
+                  { title: 'Samarbeid', desc: 'Vi tror at vi sammen oppnår de beste resultatene for din virksomhet.' },
                 ].map(v => (
                   <div key={v.title} style={{ padding: '18px 20px', background: CREAM, borderRadius: 8, border: `1px solid rgba(0,0,0,0.07)` }}>
                     <p style={{ fontSize: 13, fontWeight: 600, color: DARK, margin: '0 0 6px' }}>{v.title}</p>
@@ -546,7 +546,7 @@ function About() {
                   </div>
                 ))}
               </div>
-              <BtnAmber href="#kontakt">Get in touch</BtnAmber>
+              <BtnAmber href="#kontakt">Ta kontakt</BtnAmber>
             </FadeUp>
           </div>
           <FadeLeft delay={0.12} className="how-img">
@@ -559,8 +559,8 @@ function About() {
 }
 
 /* ─── Pricing ─── */
-const standardFeatures = ['Lead Generation', 'Marketing Content Production', 'Email Marketing', 'Market & Competitive Analysis', 'Sales Support']
-const proFeatures = ['Everything in Standard', 'Advanced Filtering', 'Lead Segmentation', 'Customer Support', 'Marketing Campaign Analysis', 'Sales Process Optimization']
+const standardFeatures = ['Leadgenerering', 'Produksjon av markedsinnhold', 'E-postmarkedsføring', 'Markeds- og konkurranseanalyse', 'Salgsstøtte']
+const proFeatures = ['Alt i Standard', 'Avansert filtrering', 'Leadsegmentering', 'Kundestøtte', 'Analyse av markedskampanjer', 'Optimalisering av salgsprosessen']
 
 function PricingCard({ plan, sub, price, features, highlight, delay }) {
   return (
@@ -570,7 +570,7 @@ function PricingCard({ plan, sub, price, features, highlight, delay }) {
         padding: '36px 28px', border: highlight ? 'none' : `1px solid rgba(0,0,0,0.09)`,
         display: 'flex', flexDirection: 'column', height: '100%', boxSizing: 'border-box',
       }}>
-        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: highlight ? AMBER : MUTED, marginBottom: 16, display: 'block' }}>{highlight ? 'Most popular' : 'Basic'}</span>
+        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: highlight ? AMBER : MUTED, marginBottom: 16, display: 'block' }}>{highlight ? 'Mest populær' : 'Grunnleggende'}</span>
         <div style={{ marginBottom: 22 }}>
           <h3 style={{ fontSize: 26, fontWeight: 700, color: highlight ? CREAM : DARK, margin: '0 0 3px' }}>{plan}</h3>
           <p style={{ fontSize: 12, color: highlight ? 'rgba(236,230,212,0.45)' : MUTED, margin: 0 }}>{sub}</p>
@@ -587,11 +587,11 @@ function PricingCard({ plan, sub, price, features, highlight, delay }) {
           ))}
         </ul>
         <div>
-          <p style={{ fontSize: 11, color: highlight ? 'rgba(236,230,212,0.35)' : MUTED, margin: '0 0 3px' }}>Monthly price</p>
+          <p style={{ fontSize: 11, color: highlight ? 'rgba(236,230,212,0.35)' : MUTED, margin: '0 0 3px' }}>Månedlig pris</p>
           <p style={{ fontSize: 30, fontWeight: 600, color: highlight ? CREAM : DARK, margin: '0 0 18px', letterSpacing: '-0.02em' }}>{price}</p>
           {highlight
-            ? <BtnAmber href="#kontakt">I'm interested</BtnAmber>
-            : <BtnOutline href="#kontakt">I'm interested</BtnOutline>}
+            ? <BtnAmber href="#kontakt">Jeg er interessert</BtnAmber>
+            : <BtnOutline href="#kontakt">Jeg er interessert</BtnOutline>}
         </div>
       </div>
     </FadeUp>
@@ -605,18 +605,18 @@ function Pricing() {
         <div className="pricing-outer" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'start' }}>
           <div>
             <FadeLeft>
-              <Eyebrow>Our pricing</Eyebrow>
+              <Eyebrow>Våre priser</Eyebrow>
               <h2 style={{ fontSize: 'clamp(28px,3.8vw,48px)', fontWeight: 600, letterSpacing: '-0.025em', color: DARK, lineHeight: 1.08, margin: '18px 0 18px' }}>
-                Find the ideal path to your success.
+                Finn den ideelle veien til din suksess.
               </h2>
               <p style={{ fontSize: 15, color: MID, lineHeight: 1.75, maxWidth: 360, margin: 0 }}>
-                Flexible packages focused on lead generation, effective marketing, and sales support. Find the solution that fits and helps your business grow.
+                Fleksible pakker med fokus på leadgenerering, effektiv markedsføring og salgsstøtte. Finn løsningen som passer og hjelper virksomheten din å vokse.
               </p>
             </FadeLeft>
           </div>
           <div className="pricing-cards" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
-            <PricingCard plan="Standard" sub="For small and mid-size businesses" price="€139" features={standardFeatures} highlight={false} delay={0.1} />
-            <PricingCard plan="Professional" sub="For growing businesses" price="€339" features={proFeatures} highlight={true} delay={0.17} />
+            <PricingCard plan="Standard" sub="For små og mellomstore bedrifter" price="€139" features={standardFeatures} highlight={false} delay={0.1} />
+            <PricingCard plan="Professional" sub="For voksende bedrifter" price="€339" features={proFeatures} highlight={true} delay={0.17} />
           </div>
         </div>
       </div>
@@ -650,12 +650,12 @@ function FinalCTA() {
 
           {/* left: heading */}
           <FadeLeft>
-            <Eyebrow light>Don't wait</Eyebrow>
+            <Eyebrow light>Ikke vent</Eyebrow>
             <h2 style={{ fontSize: 'clamp(36px,4.5vw,64px)', fontWeight: 600, color: CREAM, lineHeight: 1.04, letterSpacing: '-0.03em', margin: '20px 0 24px' }}>
-              Transform your<br />business today!
+              Forvandl din<br />virksomhet i dag!
             </h2>
             <p style={{ fontSize: 16, color: 'rgba(236,230,212,0.5)', lineHeight: 1.7, margin: 0 }}>
-              Don't wait — contact us and find out how Vintas can help your business reach the next level.
+              Ikke vent — kontakt oss og finn ut hvordan Vintas kan hjelpe din virksomhet til å nå neste nivå.
             </p>
           </FadeLeft>
 
@@ -663,23 +663,23 @@ function FinalCTA() {
           <FadeUp delay={0.15}>
             {sent ? (
               <div style={{ background: 'rgba(255,255,255,0.06)', borderRadius: 10, padding: '36px 40px', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
-                <p style={{ fontSize: 17, fontWeight: 600, color: CREAM, margin: '0 0 6px' }}>Message sent!</p>
-                <p style={{ fontSize: 13, color: 'rgba(236,230,212,0.45)', margin: 0 }}>We'll be in touch soon.</p>
+                <p style={{ fontSize: 17, fontWeight: 600, color: CREAM, margin: '0 0 6px' }}>Melding sendt!</p>
+                <p style={{ fontSize: 13, color: 'rgba(236,230,212,0.45)', margin: 0 }}>Vi tar kontakt snart.</p>
               </div>
             ) : (
               <form onSubmit={onSubmit}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
-                  <input name="firstName" value={form.firstName} onChange={onChange} required placeholder="First name" style={inp} onFocus={focus} onBlur={blur} />
-                  <input name="lastName" value={form.lastName} onChange={onChange} required placeholder="Last name" style={inp} onFocus={focus} onBlur={blur} />
+                  <input name="firstName" value={form.firstName} onChange={onChange} required placeholder="Fornavn" style={inp} onFocus={focus} onBlur={blur} />
+                  <input name="lastName" value={form.lastName} onChange={onChange} required placeholder="Etternavn" style={inp} onFocus={focus} onBlur={blur} />
                 </div>
-                <input name="email" type="email" value={form.email} onChange={onChange} required placeholder="Email" style={{ ...inp, marginBottom: 10 }} onFocus={focus} onBlur={blur} />
-                <input name="subject" value={form.subject} onChange={onChange} required placeholder="Subject" style={{ ...inp, marginBottom: 10 }} onFocus={focus} onBlur={blur} />
-                <textarea name="message" value={form.message} onChange={onChange} required placeholder="Message" rows={4} style={{ ...inp, marginBottom: 14, resize: 'none' }} onFocus={focus} onBlur={blur} />
+                <input name="email" type="email" value={form.email} onChange={onChange} required placeholder="E-post" style={{ ...inp, marginBottom: 10 }} onFocus={focus} onBlur={blur} />
+                <input name="subject" value={form.subject} onChange={onChange} required placeholder="Emne" style={{ ...inp, marginBottom: 10 }} onFocus={focus} onBlur={blur} />
+                <textarea name="message" value={form.message} onChange={onChange} required placeholder="Melding" rows={4} style={{ ...inp, marginBottom: 14, resize: 'none' }} onFocus={focus} onBlur={blur} />
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 9, marginBottom: 20 }}>
                   <input type="checkbox" id="consent" name="consent" checked={form.consent} onChange={onChange} required style={{ marginTop: 2, accentColor: AMBER, cursor: 'pointer' }} />
-                  <label htmlFor="consent" style={{ fontSize: 12, color: 'rgba(236,230,212,0.4)', cursor: 'pointer', lineHeight: 1.55 }}>I consent to the processing of personal data</label>
+                  <label htmlFor="consent" style={{ fontSize: 12, color: 'rgba(236,230,212,0.4)', cursor: 'pointer', lineHeight: 1.55 }}>Jeg samtykker til behandling av personopplysninger</label>
                 </div>
-                <BtnAmber onClick={onSubmit}>Send message</BtnAmber>
+                <BtnAmber onClick={onSubmit}>Send melding</BtnAmber>
               </form>
             )}
           </FadeUp>
@@ -695,19 +695,19 @@ function Contact() { return null }
 /* ─── Footer ─── */
 function Footer() {
   const cols = [
-    { title: 'Services', links: [
-      { label: 'Lead Generation', href: '#sluzby' },
-      { label: 'Marketing', href: '#sluzby' },
-      { label: 'Sales Support', href: '#sluzby' },
-      { label: 'Business Growth', href: '#sluzby' },
-      { label: 'Customer Engagement', href: '#sluzby' },
-      { label: 'Digital Transformation', href: '#sluzby' },
+    { title: 'Tjenester', links: [
+      { label: 'Leadgenerering', href: '#sluzby' },
+      { label: 'Markedsføring', href: '#sluzby' },
+      { label: 'Salgsstøtte', href: '#sluzby' },
+      { label: 'Forretningsvekst', href: '#sluzby' },
+      { label: 'Kundeengasjement', href: '#sluzby' },
+      { label: 'Digital transformasjon', href: '#sluzby' },
     ]},
-    { title: 'Navigation', links: [
-      { label: 'About', href: '#o-nas' },
-      { label: 'Services', href: '#sluzby' },
-      { label: 'Pricing', href: '#cenik' },
-      { label: 'Contact', href: '#kontakt' },
+    { title: 'Navigasjon', links: [
+      { label: 'Om oss', href: '#o-nas' },
+      { label: 'Tjenester', href: '#sluzby' },
+      { label: 'Priser', href: '#cenik' },
+      { label: 'Kontakt', href: '#kontakt' },
     ]},
   ]
   return (
@@ -723,7 +723,7 @@ function Footer() {
               <span style={{ fontWeight: 700, fontSize: 13, letterSpacing: '0.14em', textTransform: 'uppercase', color: CREAM }}>Vintas</span>
             </div>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.32)', lineHeight: 1.65, maxWidth: 240, margin: 0 }}>
-              Comprehensive growth solutions for your business. Lead generation, marketing and sales support.
+              Helhetlige vekstløsninger for din virksomhet. Leadgenerering, markedsføring og salgsstøtte.
             </p>
           </div>
           {cols.map(col => (
@@ -741,8 +741,8 @@ function Footer() {
           ))}
         </div>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.22)', margin: 0 }}>© 2025 Vintas. All rights reserved.</p>
-          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.18)', margin: 0 }}>Made by Vintas</p>
+          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.22)', margin: 0 }}>© 2025 Vintas. Alle rettigheter forbeholdt.</p>
+          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.18)', margin: 0 }}>Laget av Vintas</p>
         </div>
       </div>
     </footer>
@@ -757,12 +757,12 @@ function CookieBanner() {
     <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 99, background: 'rgba(20,20,16,0.96)', backdropFilter: 'blur(12px)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <div style={{ maxWidth: '90rem', margin: '0 auto', padding: '12px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
         <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', margin: 0, lineHeight: 1.6 }}>
-          We use cookies to ensure you get the best experience. By continuing to browse, we assume you accept this.
+          Vi bruker informasjonskapsler for å gi deg den beste opplevelsen. Ved å fortsette å surfe antar vi at du godtar dette.
         </p>
         <button onClick={() => setV(false)} style={{ background: AMBER, color: '#fff', border: 'none', borderRadius: 999, padding: '8px 20px', fontSize: 12, fontWeight: 600, cursor: 'pointer', flexShrink: 0, transition: 'background 0.2s' }}
           onMouseEnter={e => e.currentTarget.style.background = AMBER2}
           onMouseLeave={e => e.currentTarget.style.background = AMBER}
-        >Accept</button>
+        >Godta</button>
       </div>
     </div>
   )
