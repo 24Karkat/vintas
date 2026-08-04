@@ -568,7 +568,30 @@ function FinalCTA() {
 function Contact() { return null }
 
 /* ─── Footer ─── */
+/* ─── Legal Modal ─── */
+function LegalModal({ title, children, onClose }) {
+  useEffect(() => {
+    const fn = e => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', fn)
+    return () => document.removeEventListener('keydown', fn)
+  }, [onClose])
+  return (
+    <div onClick={onClose} style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+      <div onClick={e => e.stopPropagation()} style={{ background: CREAM, borderRadius: 10, maxWidth: 680, width: '100%', maxHeight: '80vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 24px 80px rgba(0,0,0,0.3)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 28px', borderBottom: `1px solid rgba(0,0,0,0.08)` }}>
+          <h2 style={{ fontSize: 18, color: DARK, margin: 0 }}>{title}</h2>
+          <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: MUTED, fontSize: 20, lineHeight: 1 }}>✕</button>
+        </div>
+        <div style={{ padding: '24px 28px', overflowY: 'auto', fontSize: 13, color: MID, lineHeight: 1.75 }}>
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function Footer() {
+  const [modal, setModal] = useState(null)
   const cols = [
     { title: 'Tjenester', links: [
       { label: 'Leadgenerering', href: '#sluzby' },
@@ -586,6 +609,7 @@ function Footer() {
     ]},
   ]
   return (
+    <>
     <footer style={{ background: '#0e0e0b', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
       <div style={{ maxWidth: '90rem', margin: '0 auto', padding: '56px 28px 36px' }}>
         <div className="footer-cols" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 48, marginBottom: 44 }}>
@@ -618,19 +642,54 @@ function Footer() {
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.22)', margin: 0 }}>© 2025 Vintas. Alle rettigheter forbeholdt.</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-            <a href="#" style={{ fontSize: 12, color: 'rgba(255,255,255,0.22)', textDecoration: 'none', transition: 'color 0.2s' }}
+            <button onClick={() => setModal('privacy')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 12, color: 'rgba(255,255,255,0.22)', padding: 0, transition: 'color 0.2s' }}
               onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
               onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.22)'}
-            >Personvernpolicy</a>
-            <a href="#" style={{ fontSize: 12, color: 'rgba(255,255,255,0.22)', textDecoration: 'none', transition: 'color 0.2s' }}
+            >Personvernpolicy</button>
+            <button onClick={() => setModal('cookies')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 12, color: 'rgba(255,255,255,0.22)', padding: 0, transition: 'color 0.2s' }}
               onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
               onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.22)'}
-            >Informasjonskapsler</a>
+            >Informasjonskapsler</button>
             <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.18)', margin: 0 }}>Laget av Vintas</p>
           </div>
         </div>
       </div>
     </footer>
+    <AnimatePresence>
+      {modal === 'privacy' && (
+        <LegalModal title="Personvernpolicy" onClose={() => setModal(null)}>
+          <p><strong>Sist oppdatert:</strong> januar 2025</p>
+          <p>Vintas («vi», «oss») er opptatt av å beskytte dine personopplysninger. Denne personvernpolicyen forklarer hvilke opplysninger vi samler inn, hvordan vi bruker dem og hvilke rettigheter du har.</p>
+          <h3 style={{ fontSize: 14, color: DARK, margin: '18px 0 6px' }}>Hvilke opplysninger vi samler inn</h3>
+          <p>Vi kan samle inn følgende opplysninger når du kontakter oss via skjemaet på nettsiden: fornavn, etternavn, e-postadresse og innholdet i meldingen din.</p>
+          <h3 style={{ fontSize: 14, color: DARK, margin: '18px 0 6px' }}>Hvordan vi bruker opplysningene</h3>
+          <p>Opplysningene brukes utelukkende til å besvare din henvendelse og tilby deg relevante tjenester fra Vintas. Vi selger eller deler ikke dine personopplysninger med tredjeparter.</p>
+          <h3 style={{ fontSize: 14, color: DARK, margin: '18px 0 6px' }}>Lagring og sikkerhet</h3>
+          <p>Vi lagrer opplysningene dine så lenge det er nødvendig for å oppfylle formålet de ble samlet inn for, eller så lenge loven krever det. Vi bruker egnede tekniske og organisatoriske tiltak for å beskytte dine data.</p>
+          <h3 style={{ fontSize: 14, color: DARK, margin: '18px 0 6px' }}>Dine rettigheter</h3>
+          <p>Du har rett til innsyn, retting og sletting av dine personopplysninger. For å utøve disse rettighetene, kontakt oss på: <strong>kontakt@vintas.no</strong></p>
+          <h3 style={{ fontSize: 14, color: DARK, margin: '18px 0 6px' }}>Kontakt</h3>
+          <p>Vintas, Oslo, Norge. E-post: kontakt@vintas.no</p>
+        </LegalModal>
+      )}
+      {modal === 'cookies' && (
+        <LegalModal title="Informasjonskapsler (Cookies)" onClose={() => setModal(null)}>
+          <p><strong>Sist oppdatert:</strong> januar 2025</p>
+          <p>Denne nettsiden bruker informasjonskapsler (cookies) for å forbedre brukeropplevelsen. Her forklarer vi hva informasjonskapsler er, hvilke vi bruker og hvordan du kan administrere dem.</p>
+          <h3 style={{ fontSize: 14, color: DARK, margin: '18px 0 6px' }}>Hva er informasjonskapsler?</h3>
+          <p>Informasjonskapsler er små tekstfiler som lagres på enheten din når du besøker en nettside. De hjelper nettsiden med å huske preferansene dine og forbedre funksjonaliteten.</p>
+          <h3 style={{ fontSize: 14, color: DARK, margin: '18px 0 6px' }}>Nødvendige informasjonskapsler</h3>
+          <p>Disse er nødvendige for at nettsiden skal fungere og kan ikke slås av. De lagrer for eksempel ditt samtykke til bruk av informasjonskapsler.</p>
+          <h3 style={{ fontSize: 14, color: DARK, margin: '18px 0 6px' }}>Analytiske informasjonskapsler</h3>
+          <p>Vi kan bruke analyseverktøy for å forstå hvordan besøkende bruker nettsiden. Disse aktiveres kun dersom du godtar informasjonskapsler.</p>
+          <h3 style={{ fontSize: 14, color: DARK, margin: '18px 0 6px' }}>Administrer samtykke</h3>
+          <p>Du kan når som helst endre ditt samtykke ved å slette nettleserens lagrede data eller ved å kontakte oss. Du kan også administrere informasjonskapsler direkte i nettleserinnstillingene dine.</p>
+          <h3 style={{ fontSize: 14, color: DARK, margin: '18px 0 6px' }}>Kontakt</h3>
+          <p>Vintas, Oslo, Norge. E-post: kontakt@vintas.no</p>
+        </LegalModal>
+      )}
+    </AnimatePresence>
+    </>
   )
 }
 
