@@ -499,11 +499,78 @@ function Pricing() {
   )
 }
 
+/* ─── Jobs ─── */
+function Jobs() {
+  const bullets1 = [
+    'Ingen kalde samtaler: Du ringer kun kunder som allerede har vist interesse.',
+    'Ubegrenset inntekt: Vi har en provisjonsmodell uten tak – dine resultater setter grensen.',
+    'Profesjonell vekst: Du får full opplæring innen både salg og investeringsbransjen.',
+    'Internasjonalt miljø: Bli en del av et ambisiøst team med store karrieremuligheter.',
+  ]
+  const bullets2 = [
+    'Du har en salgsorientert tankegang og sterke kommunikasjonsevner.',
+    'Du snakker flytende norsk (for kundekontakt) og engelsk (for internt samarbeid).',
+    'Du er pålitelig, ambisiøs og trives i et høyt tempo.',
+    'Erfaring fra salg eller kundesenter er en fordel, men din innstilling veier tyngst.',
+  ]
+  return (
+    <section id="jobb" className="section-pad" style={{ background: CREAM2, padding: '96px 0' }}>
+      <div className="inner-pad" style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 28px' }}>
+        <FadeUp style={{ marginBottom: 48 }}>
+          <Eyebrow>Vi ansetter</Eyebrow>
+          <h2 style={{ fontSize: 'clamp(28px,4vw,52px)', letterSpacing: '-0.025em', color: DARK, lineHeight: 1.08, margin: '14px 0 0' }}>
+            Junior Salgskonsulent
+          </h2>
+        </FadeUp>
+        <div className="split-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
+          <FadeLeft>
+            <p style={{ fontSize: 15, color: MID, lineHeight: 1.8, margin: '0 0 32px' }}>
+              Leter du etter en salgsrolle der du slipper «cold calling», og der inntekten din kun avhenger av dine egne resultater? Vi er et internasjonalt markedsføringsselskap som nå utvider teamet i Oslo! Som Lead Conversion Specialist vil du jobbe utelukkende med innkommende, prekvalifiserte leads fra våre markedsføringskampanjer.
+            </p>
+            <h3 style={{ fontSize: 16, color: DARK, margin: '0 0 16px' }}>Hvorfor bli en del av vårt team?</h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {bullets1.map((b, i) => (
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: MID, lineHeight: 1.65 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: AMBER, flexShrink: 0, marginTop: 8 }} />
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <BtnAmber href="#kontakt">Send søknad</BtnAmber>
+          </FadeLeft>
+          <FadeUp delay={0.15}>
+            <div style={{ background: CREAM, borderRadius: 10, padding: '32px 28px', border: `1px solid rgba(0,0,0,0.07)` }}>
+              <h3 style={{ fontSize: 16, color: DARK, margin: '0 0 20px' }}>Hvem ser vi etter?</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+                {bullets2.map((b, i) => (
+                  <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: MID, lineHeight: 1.65 }}>
+                    <svg width="16" height="16" viewBox="0 0 15 15" fill="none" style={{ flexShrink: 0, marginTop: 2 }}>
+                      <circle cx="7.5" cy="7.5" r="7" stroke="rgba(0,0,0,0.12)" />
+                      <path d="M4.5 7.8l2 2 4-4" stroke={DARK} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+              <div style={{ marginTop: 28, paddingTop: 24, borderTop: `1px solid rgba(0,0,0,0.07)`, display: 'flex', alignItems: 'center', gap: 10 }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
+                <span style={{ fontSize: 13, color: MID }}>Stilling ledig — Oslo</span>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ─── Final CTA + Contact ─── */
 function FinalCTA() {
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', subject: '', message: '', consent: false })
+  const [cv, setCv] = useState(null)
   const [sent, setSent] = useState(false)
   const onChange = e => { const { name, value, type, checked } = e.target; setForm(f => ({ ...f, [name]: type === 'checkbox' ? checked : value })) }
+  const onCvChange = e => { const f = e.target.files[0]; setCv(f || null) }
   const onSubmit = e => { e.preventDefault(); if (form.consent) setSent(true) }
 
   const inp = {
@@ -549,7 +616,21 @@ function FinalCTA() {
                 </div>
                 <input name="email" type="email" value={form.email} onChange={onChange} required placeholder="E-post" style={{ ...inp, marginBottom: 10 }} onFocus={focus} onBlur={blur} />
                 <input name="subject" value={form.subject} onChange={onChange} required placeholder="Emne" style={{ ...inp, marginBottom: 10 }} onFocus={focus} onBlur={blur} />
-                <textarea name="message" value={form.message} onChange={onChange} required placeholder="Melding" rows={4} style={{ ...inp, marginBottom: 14, resize: 'none' }} onFocus={focus} onBlur={blur} />
+                <textarea name="message" value={form.message} onChange={onChange} required placeholder="Melding" rows={4} style={{ ...inp, marginBottom: 10, resize: 'none' }} onFocus={focus} onBlur={blur} />
+                <label htmlFor="cv-upload" style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', boxSizing: 'border-box', background: 'rgba(255,255,255,0.06)', border: `1px solid ${cv ? AMBER : 'rgba(255,255,255,0.12)'}`, borderRadius: 7, padding: '11px 15px', marginBottom: 14, cursor: 'pointer', transition: 'border-color 0.2s' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={cv ? AMBER : 'rgba(236,230,212,0.4)'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                  <span style={{ fontSize: 13, color: cv ? CREAM : 'rgba(236,230,212,0.4)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {cv ? cv.name : 'Last opp CV (valgfritt)'}
+                  </span>
+                  {cv && (
+                    <span onClick={e => { e.preventDefault(); setCv(null) }} style={{ fontSize: 12, color: 'rgba(236,230,212,0.35)', cursor: 'pointer', flexShrink: 0 }}>✕</span>
+                  )}
+                  <input id="cv-upload" type="file" accept=".pdf,.doc,.docx" onChange={onCvChange} style={{ display: 'none' }} />
+                </label>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 9, marginBottom: 20 }}>
                   <input type="checkbox" id="consent" name="consent" checked={form.consent} onChange={onChange} required style={{ marginTop: 2, accentColor: AMBER, cursor: 'pointer' }} />
                   <label htmlFor="consent" style={{ fontSize: 12, color: 'rgba(236,230,212,0.4)', cursor: 'pointer', lineHeight: 1.55 }}>Jeg samtykker til behandling av personopplysninger</label>
@@ -757,6 +838,7 @@ export default function App() {
       <Services />
       <About />
       <Pricing />
+      <Jobs />
       <FinalCTA />
       <Footer />
       <CookieBanner />
