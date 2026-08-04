@@ -103,7 +103,7 @@ function MaskedImage({ src, alt, bg = CREAM, ratio = '4/3' }) {
       <svg xmlns="http://www.w3.org/2000/svg" width="40%" viewBox="0 0 225 48" fill="none" style={{ position: 'absolute', top: -6, right: -8 }}>
         <path d="M225 0H0C3.79228 0 6.89047 1.72683 9.01229 4.04322L39.3706 36.369C40.907 38.539 43.4061 39.8298 46.0715 39.8298H216.8C221.329 39.8298 225 43.4877 225 48V0Z" fill={bg}/>
       </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="40%" viewBox="0 0 225 48" fill="none" style={{ position: 'absolute', bottom: -8, left: 0, transform: 'rotate(180deg)' }}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="40%" viewBox="0 0 225 48" fill="none" style={{ position: 'absolute', bottom: -8, left: -12, transform: 'rotate(180deg)' }}>
         <path d="M225 0H0C3.79228 0 6.89047 1.72683 9.01229 4.04322L39.3706 36.369C40.907 38.539 43.4061 39.8298 46.0715 39.8298H216.8C221.329 39.8298 225 43.4877 225 48V0Z" fill={bg}/>
       </svg>
     </div>
@@ -242,9 +242,9 @@ function Hero() {
 /* ─── Stats ─── */
 function Stats() {
   const stats = [
-    { num: '$2.4B', label: 'Kundeinntekter påvirket' },
-    { num: '90 dager', label: 'Gjennomsnittlig samarbeidsperiode' },
-    { num: '94%', label: 'Kundelojalitet' },
+    { num: 'Oslo', label: 'Basert i Norge' },
+    { num: '6+', label: 'Spesialiserte tjenester' },
+    { num: '100%', label: 'Fokus på resultater' },
   ]
   return (
     <section style={{ background: CREAM2, padding: '56px 0 80px' }}>
@@ -312,7 +312,7 @@ const services = [
   {
     title: 'Leadgenerering',
     desc: 'Kvalitetskontakter for vekst. Vi når effektivt frem til potensielle kunder og bygger et sterkt forretningsnettverk.',
-    img: '/69df7963f4d7107f44bb5647_operations-audit-p-800.avif',
+    img: '/66bc962b0f20e07238b08efe_20933-1.jpg',
   },
   {
     title: 'Markedsføring',
@@ -322,22 +322,22 @@ const services = [
   {
     title: 'Salgsstøtte',
     desc: 'Gjør potensielle kunder til betalende kunder og maksimer konverteringen av salgsinnsatsen din.',
-    img: '/69df79634555589136d204df_org-alignment-p-800.avif',
+    img: '/69df7963f4d7107f44bb5647_operations-audit-p-800.avif',
   },
   {
     title: 'Forretningsvekst',
     desc: 'Rask og bærekraftig vekst med tydelig definerte mål. Oppdag nye muligheter og utvid rekkevidden din.',
-    img: '/69df7963f4d7107f44bb5647_operations-audit-p-800.avif',
+    img: '/69df79634555589136d204df_org-alignment-p-800.avif',
   },
   {
     title: 'Kundeengasjement',
     desc: 'Bygg ekte sterke relasjoner og styrk lojaliteten til kundene dine kontinuerlig for langsiktig suksess.',
-    img: '/69df796357d40d908a185636_systems-design-p-800.avif',
+    img: '/66bc9203dda1971d3bb286d0_Rectangle-2-1.png',
   },
   {
     title: 'Digital transformasjon',
     desc: 'Utnytt den digitale verden for din forretningssuksess. Moderne teknologi for bedre salgs- og markedsresultater.',
-    img: '/69df79634555589136d204df_org-alignment-p-800.avif',
+    img: '/69dd3998d341cce4ddbf47c6_22761647e70044deae7818374a71cb74_home-about (1).jpg',
   },
 ]
 
@@ -393,131 +393,6 @@ function Services() {
   )
 }
 
-/* ─── Callout dark (Growth Playbook equivalent) ─── */
-function Callout() {
-  return (
-    <section style={{ background: CREAM, padding: '0 0 96px' }}>
-      <div className="inner-pad" style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 28px' }}>
-        <div style={{ background: DARK, borderRadius: 10, overflow: 'hidden', display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 320 }} className="grid-cols-1 md:grid-cols-2">
-          {/* image side */}
-          <div style={{ position: 'relative', minHeight: 260 }}>
-            <img src="/69df796368cee0bbccd9a094_435e23c99a50ecda3c2a4434592115c9_home-intro.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} onError={e => { e.currentTarget.style.display = 'none' }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, transparent 60%, #141410 100%)' }} />
-          </div>
-          {/* content side */}
-          <FadeUp delay={0.1} style={{ padding: '52px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <Eyebrow light>Free download</Eyebrow>
-            <h2 style={{ fontSize: 'clamp(26px,3.5vw,44px)', fontWeight: 600, color: CREAM, letterSpacing: '-0.025em', lineHeight: 1.1, margin: '16px 0 18px' }}>
-              The Growth Playbook
-            </h2>
-            <p style={{ fontSize: 14, color: 'rgba(236,230,212,0.55)', lineHeight: 1.75, margin: '0 0 28px', maxWidth: 360 }}>
-              A 90-day embedded engagement that delivers a complete operational blueprint for your business. Every system documented. Every bottleneck solved.
-            </p>
-            <div><BtnAmber href="#kontakt">Get the download</BtnAmber></div>
-          </FadeUp>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* ─── Case studies ─── */
-const cases = [
-  { tag: 'Distribution', title: 'Scaling from $30M to $80M without adding headcount', img: '/69df7963f4d7107f44bb5647_operations-audit-p-800.avif' },
-  { tag: 'Construction', title: 'Eliminating project overruns for a mid-size construction firm', img: '/69df796357d40d908a185636_systems-design-p-800.avif' },
-  { tag: 'Healthcare', title: 'Building a scalable onboarding process for a growing healthcare company', img: '/69df79634555589136d204df_org-alignment-p-800.avif' },
-]
-
-function CaseCard({ c, i }) {
-  const [hov, setHov] = useState(false)
-  return (
-    <FadeUp delay={i * 0.1}>
-      <div style={{ background: CREAM, borderRadius: 8, overflow: 'hidden', cursor: 'pointer', transition: 'transform 0.3s', transform: hov ? 'translateY(-4px)' : 'none' }}
-        onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
-        <div style={{ position: 'relative', aspectRatio: '16/9', background: CREAM2, overflow: 'hidden' }}>
-          <img src={c.img} alt={c.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s', transform: hov ? 'scale(1.05)' : 'scale(1)' }}
-            onError={e => { e.currentTarget.style.display = 'none' }} />
-          <div style={{ position: 'absolute', top: 12, right: 12, width: 36, height: 36, borderRadius: 999, background: DARK, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <ArrowIcon size={15} color="#fff" />
-          </div>
-        </div>
-        <div style={{ padding: '20px 22px 24px' }}>
-          <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: MUTED, display: 'block', marginBottom: 8 }}>{c.tag}</span>
-          <h3 style={{ fontSize: 15, fontWeight: 600, color: DARK, margin: '0 0 14px', lineHeight: 1.45 }}>{c.title}</h3>
-          <a href="#" style={{ fontSize: 12, color: MID, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 500 }}>
-            Read case study <ArrowIcon size={12} color={MID} />
-          </a>
-        </div>
-        <div style={{ height: 1, background: 'rgba(0,0,0,0.07)', margin: '0 22px' }} />
-      </div>
-    </FadeUp>
-  )
-}
-
-function Cases() {
-  return (
-    <section id="cases" className="section-pad" style={{ background: CREAM2, padding: '96px 0' }}>
-      <div className="inner-pad" style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 28px' }}>
-        <FadeUp style={{ textAlign: 'center', marginBottom: 52 }}>
-          <Eyebrow>Hear from our clients</Eyebrow>
-          <h2 style={{ fontSize: 'clamp(28px,4vw,52px)', fontWeight: 600, letterSpacing: '-0.025em', color: DARK, lineHeight: 1.08, margin: '14px 0 0' }}>
-            Operational clarity, measurable results
-          </h2>
-        </FadeUp>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 28 }}>
-          {cases.map((c, i) => <CaseCard key={c.title} c={c} i={i} />)}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* ─── Testimonial ─── */
-const testimonials = [
-  { quote: '"The Growth Playbook doesn\'t just collect dust. We reference it in every quarterly planning meeting, and it has reshaped how we think about hiring, process, and accountability across our organization. Vintas didn\'t just consult — they transformed the way our company operates."', name: 'Sarah Ødegård', role: 'Chief Operating Officer' },
-  { quote: '"We had tried to scale for two years without cracking the code. Vintas identified the core problem in under two weeks and delivered an action plan we could actually execute. 90 days in, we had eliminated 40% of our operational friction."', name: 'Lars Bergman', role: 'CEO, Hartwell Distribution' },
-]
-
-function Testimonial() {
-  const [idx, setIdx] = useState(0)
-  const t = testimonials[idx]
-  return (
-    <section className="section-pad" style={{ background: CREAM, padding: '96px 0' }}>
-      <div className="inner-pad" style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 28px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-          {/* prev */}
-          <button onClick={() => setIdx((idx - 1 + testimonials.length) % testimonials.length)}
-            style={{ width: 44, height: 44, borderRadius: 999, border: `1px solid rgba(0,0,0,0.12)`, background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5.44 18l7.5-7.5L5.44 3" stroke={DARK} strokeWidth="1.5"/></svg>
-          </button>
-
-          <AnimatePresence mode="wait">
-            <motion.div key={idx} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.4 }} style={{ flex: 1, textAlign: 'center' }}>
-              <p style={{ fontSize: 'clamp(15px,2.2vw,22px)', color: DARK, lineHeight: 1.65, fontWeight: 400, margin: '0 0 32px', letterSpacing: '-0.01em', fontStyle: 'italic' }}>
-                {t.quote}
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-                <div style={{ width: 40, height: 40, borderRadius: 999, background: CREAM2, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700, color: DARK }}>
-                  {t.name[0]}
-                </div>
-                <div style={{ textAlign: 'left' }}>
-                  <p style={{ fontSize: 13, fontWeight: 600, color: DARK, margin: 0 }}>{t.name}</p>
-                  <p style={{ fontSize: 12, color: MUTED, margin: '2px 0 0' }}>{t.role}</p>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* next */}
-          <button onClick={() => setIdx((idx + 1) % testimonials.length)}
-            style={{ width: 44, height: 44, borderRadius: 999, border: `1px solid rgba(0,0,0,0.12)`, background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18.56 3l-7.5 7.5 7.5 7.5" stroke={DARK} strokeWidth="1.5"/></svg>
-          </button>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 /* ─── About ─── */
 function About() {
@@ -742,7 +617,17 @@ function Footer() {
         </div>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.22)', margin: 0 }}>© 2025 Vintas. Alle rettigheter forbeholdt.</p>
-          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.18)', margin: 0 }}>Laget av Vintas</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+            <a href="#" style={{ fontSize: 12, color: 'rgba(255,255,255,0.22)', textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.22)'}
+            >Personvernpolicy</a>
+            <a href="#" style={{ fontSize: 12, color: 'rgba(255,255,255,0.22)', textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.22)'}
+            >Informasjonskapsler</a>
+            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.18)', margin: 0 }}>Laget av Vintas</p>
+          </div>
         </div>
       </div>
     </footer>
@@ -751,19 +636,28 @@ function Footer() {
 
 /* ─── Cookie ─── */
 function CookieBanner() {
-  const [v, setV] = useState(true)
+  const [v, setV] = useState(() => {
+    try { return !localStorage.getItem('cookie_consent') } catch { return true }
+  })
+  const accept = () => { try { localStorage.setItem('cookie_consent', 'accepted') } catch {} setV(false) }
+  const reject = () => { try { localStorage.setItem('cookie_consent', 'rejected') } catch {} setV(false) }
   if (!v) return null
   return (
-    <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 99, background: 'rgba(20,20,16,0.96)', backdropFilter: 'blur(12px)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-      <div style={{ maxWidth: '90rem', margin: '0 auto', padding: '12px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
-        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', margin: 0, lineHeight: 1.6 }}>
-          Vi bruker informasjonskapsler for å gi deg den beste opplevelsen. Ved å fortsette å surfe antar vi at du godtar dette.
+    <div style={{ position: 'fixed', bottom: '0.75rem', left: '50%', transform: 'translateX(-50%)', zIndex: 99, background: 'rgba(24,19,18,0.75)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '0.375rem', padding: '10px 14px 10px 18px', display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap', maxWidth: 'calc(100% - 1rem)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
+        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', margin: 0, lineHeight: 1.55, whiteSpace: 'nowrap' }}>
+          Vi bruker informasjonskapsler.{' '}
+          <a href="#" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'underline' }}>Les mer</a>
         </p>
-        <button onClick={() => setV(false)} style={{ background: AMBER, color: '#fff', border: 'none', borderRadius: 999, padding: '8px 20px', fontSize: 12, fontWeight: 600, cursor: 'pointer', flexShrink: 0, transition: 'background 0.2s' }}
-          onMouseEnter={e => e.currentTarget.style.background = AMBER2}
-          onMouseLeave={e => e.currentTarget.style.background = AMBER}
-        >Godta</button>
-      </div>
+        <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
+          <button onClick={reject} style={{ background: 'transparent', color: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '0.375rem', padding: '6px 14px', fontSize: 11, fontWeight: 600, cursor: 'pointer', transition: 'border-color 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'}
+            onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'}
+          >Avvis</button>
+          <button onClick={accept} style={{ background: AMBER, color: DARK, border: 'none', borderRadius: '0.375rem', padding: '6px 14px', fontSize: 11, fontWeight: 600, cursor: 'pointer', transition: 'background 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.background = AMBER2}
+            onMouseLeave={e => e.currentTarget.style.background = AMBER}
+          >Godta alle</button>
+        </div>
     </div>
   )
 }
