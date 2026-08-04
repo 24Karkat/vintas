@@ -541,7 +541,7 @@ function Jobs() {
           </FadeLeft>
           <FadeUp delay={0.15}>
             <div style={{ background: CREAM, borderRadius: 10, padding: '32px 28px', border: `1px solid rgba(0,0,0,0.07)` }}>
-              <h3 style={{ fontSize: 16, color: DARK, margin: '0 0 20px' }}>Hvem ser vi etter?</h3>
+              <h3 style={{ fontSize: 20, color: DARK, margin: '0 0 20px' }}>Hvem ser vi etter?</h3>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
                 {bullets2.map((b, i) => (
                   <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: MID, lineHeight: 1.65 }}>
