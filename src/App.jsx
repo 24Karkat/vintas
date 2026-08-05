@@ -504,14 +504,17 @@ function Pricing() {
 function Jobs() {
   const bullets1 = [
     'Ingen kalde samtaler: Du ringer kun kunder som allerede har vist interesse.',
-    'Ubegrenset inntekt: Vi har en provisjonsmodell uten tak – dine resultater setter grensen.',
-    'Profesjonell vekst: Du får full opplæring innen både salg og investeringsbransjen.',
+    'Ubegrenset inntekt: Provisjonsmodell uten tak – dine resultater setter grensen.',
+    'Lev som en konge på norsk lønn: Leiekostnader, mat og fritid i Pilsen koster omtrent halvparten av Oslo. Den samme lønnen rekker dobbelt så langt.',
+    'Et ekte eventyr: Flytt til utlandet, bo med teamet i en felles firmavilla, utforsk et nytt land og en ny kultur.',
+    'Profesjonell vekst: Full opplæring innen både salg og investeringsbransjen.',
     'Internasjonalt miljø: Bli en del av et ambisiøst team med store karrieremuligheter.',
   ]
   const bullets2 = [
-    'Du har en salgsorientert tankegang og sterke kommunikasjonsevner.',
-    'Du snakker flytende norsk (for kundekontakt) og engelsk (for internt samarbeid).',
-    'Du er pålitelig, ambisiøs og trives i et høyt tempo.',
+    'Salgsorientert tankegang og sterke kommunikasjonsevner.',
+    'Flytende norsk (for kundekontakt) og engelsk (for internt samarbeid).',
+    'Pålitelig, ambisiøs og trives i et høyt tempo.',
+    'Åpen for å flytte og starte et nytt kapittel i utlandet.',
     'Erfaring fra salg eller kundesenter er en fordel, men din innstilling veier tyngst.',
   ]
   return (
@@ -520,13 +523,14 @@ function Jobs() {
         <FadeUp style={{ marginBottom: 48 }}>
           <Eyebrow>Vi ansetter</Eyebrow>
           <h2 style={{ fontSize: 'clamp(28px,4vw,52px)', letterSpacing: '-0.025em', color: DARK, lineHeight: 1.08, margin: '14px 0 0' }}>
-            Junior Salgskonsulent
+            Lead Conversion Specialist
           </h2>
+          <p style={{ fontSize: 15, color: MID, margin: '12px 0 0', lineHeight: 1.6 }}>Oslo → Pilsen, Tsjekkia</p>
         </FadeUp>
         <div className="split-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
           <FadeLeft>
             <p style={{ fontSize: 15, color: MID, lineHeight: 1.8, margin: '0 0 32px' }}>
-              Leter du etter en salgsrolle der du slipper «cold calling», og der inntekten din kun avhenger av dine egne resultater? Vi er et internasjonalt markedsføringsselskap som nå utvider teamet i Oslo! Som Lead Conversion Specialist vil du jobbe utelukkende med innkommende, prekvalifiserte leads fra våre markedsføringskampanjer.
+              Leter du etter en salgsrolle der du slipper kalde samtaler, tjener uten tak — og får et ekte eventyr på kjøpet? Vi er en internasjonal salgsorganisasjon som utvider teamet. Du starter i Oslo, og etter å ha bevist deg selv får du muligheten til å flytte til teamet vårt i Pilsen, Tsjekkia — der norsk lønn rekker dobbelt så langt.
             </p>
             <h3 style={{ fontSize: 16, color: DARK, margin: '0 0 16px' }}>Hvorfor bli en del av vårt team?</h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px', display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -555,7 +559,7 @@ function Jobs() {
               </ul>
               <div style={{ marginTop: 28, paddingTop: 24, borderTop: `1px solid rgba(0,0,0,0.07)`, display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
-                <span style={{ fontSize: 13, color: MID }}>Stilling ledig — Oslo</span>
+                <span style={{ fontSize: 13, color: MID }}>Stilling ledig — Oslo / Pilsen</span>
               </div>
             </div>
           </FadeUp>
