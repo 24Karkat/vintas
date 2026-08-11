@@ -570,20 +570,73 @@ function Jobs() {
 }
 
 /* ─── Final CTA + Contact ─── */
-function FinalCTA() {
-  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', subject: '', message: '', consent: false })
-  const [cv, setCv] = useState(null)
-  const [sent, setSent] = useState(false)
-  const onChange = e => { const { name, value, type, checked } = e.target; setForm(f => ({ ...f, [name]: type === 'checkbox' ? checked : value })) }
-  const onCvChange = e => { const f = e.target.files[0]; setCv(f || null) }
-  const onSubmit = e => { e.preventDefault(); if (form.consent) setSent(true) }
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const NAME_RE  = /^[\p{L}\s\-]{2,}$/u
 
+function FinalCTA() {
+  const [form, setForm]     = useState({ firstName: '', lastName: '', email: '', subject: '', message: '', consent: false })
+  const [cv, setCv]         = useState(null)
+  const [errors, setErrors] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [sent, setSent]     = useState(false)
+  const [serverErr, setServerErr] = useState('')
+
+  const onChange = e => {
+    const { name, value, type, checked } = e.target
+    setForm(f => ({ ...f, [name]: type === 'checkbox' ? checked : value }))
+    setErrors(ev => ({ ...ev, [name]: '' }))
+  }
+  const onCvChange = e => { setCv(e.target.files[0] || null) }
+
+  const validate = () => {
+    const e = {}
+    if (!NAME_RE.test(form.firstName))  e.firstName = 'Ugyldig fornavn'
+    if (!NAME_RE.test(form.lastName))   e.lastName  = 'Ugyldig etternavn'
+    if (!EMAIL_RE.test(form.email))     e.email     = 'Ugyldig e-postadresse'
+    if (form.subject.trim().length < 3) e.subject   = 'For kort emne'
+    if (form.message.trim().length < 10) e.message  = 'Meldingen er for kort'
+    if (!form.consent)                  e.consent   = 'Samtykke er påkrevd'
+    setErrors(e)
+    return Object.keys(e).length === 0
+  }
+
+  const toBase64 = file => new Promise((resolve, reject) => {
+    const r = new FileReader()
+    r.onload = () => resolve(r.result.split(',')[1])
+    r.onerror = reject
+    r.readAsDataURL(file)
+  })
+
+  const onSubmit = async e => {
+    e.preventDefault()
+    if (!validate()) return
+    setLoading(true)
+    setServerErr('')
+    try {
+      const body = { ...form }
+      if (cv) { body.cv = await toBase64(cv); body.cvName = cv.name }
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+      const data = await res.json()
+      if (data.success) { setSent(true) }
+      else { setServerErr(data.error || 'Noe gikk galt. Prøv igjen.') }
+    } catch {
+      setServerErr('Noe gikk galt. Prøv igjen.')
+    }
+    setLoading(false)
+  }
+
+  const errStyle = { fontSize: 11, color: '#f87171', marginTop: 4, marginBottom: 6 }
   const inp = {
     width: '100%', boxSizing: 'border-box', background: 'rgba(255,255,255,0.06)',
     border: `1px solid rgba(255,255,255,0.12)`, borderRadius: 7,
     padding: '13px 15px', fontSize: 13, color: CREAM, outline: 'none',
     transition: 'border-color 0.2s', fontFamily: 'inherit',
   }
+  const inpErr = { ...inp, border: '1px solid rgba(248,113,113,0.6)' }
   const focus = e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.35)' }
   const blur  = e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)' }
 
@@ -614,15 +667,24 @@ function FinalCTA() {
                 <p style={{ fontSize: 13, color: 'rgba(236,230,212,0.45)', margin: 0 }}>Vi tar kontakt snart.</p>
               </div>
             ) : (
-              <form onSubmit={onSubmit}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
-                  <input name="firstName" value={form.firstName} onChange={onChange} required placeholder="Fornavn" style={inp} onFocus={focus} onBlur={blur} />
-                  <input name="lastName" value={form.lastName} onChange={onChange} required placeholder="Etternavn" style={inp} onFocus={focus} onBlur={blur} />
+              <form onSubmit={onSubmit} noValidate>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 4 }}>
+                  <div>
+                    <input name="firstName" value={form.firstName} onChange={onChange} placeholder="Fornavn" style={errors.firstName ? inpErr : inp} onFocus={focus} onBlur={blur} />
+                    {errors.firstName && <div style={errStyle}>{errors.firstName}</div>}
+                  </div>
+                  <div>
+                    <input name="lastName" value={form.lastName} onChange={onChange} placeholder="Etternavn" style={errors.lastName ? inpErr : inp} onFocus={focus} onBlur={blur} />
+                    {errors.lastName && <div style={errStyle}>{errors.lastName}</div>}
+                  </div>
                 </div>
-                <input name="email" type="email" value={form.email} onChange={onChange} required placeholder="E-post" style={{ ...inp, marginBottom: 10 }} onFocus={focus} onBlur={blur} />
-                <input name="subject" value={form.subject} onChange={onChange} required placeholder="Emne" style={{ ...inp, marginBottom: 10 }} onFocus={focus} onBlur={blur} />
-                <textarea name="message" value={form.message} onChange={onChange} required placeholder="Melding" rows={4} style={{ ...inp, marginBottom: 10, resize: 'none' }} onFocus={focus} onBlur={blur} />
-                <label htmlFor="cv-upload" style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', boxSizing: 'border-box', background: 'rgba(255,255,255,0.06)', border: `1px solid ${cv ? AMBER : 'rgba(255,255,255,0.12)'}`, borderRadius: 7, padding: '11px 15px', marginBottom: 14, cursor: 'pointer', transition: 'border-color 0.2s' }}>
+                <input name="email" type="email" value={form.email} onChange={onChange} placeholder="E-post" style={{ ...(errors.email ? inpErr : inp), marginTop: 6, marginBottom: errors.email ? 0 : 10 }} onFocus={focus} onBlur={blur} />
+                {errors.email && <div style={errStyle}>{errors.email}</div>}
+                <input name="subject" value={form.subject} onChange={onChange} placeholder="Emne" style={{ ...(errors.subject ? inpErr : inp), marginTop: errors.email ? 6 : 0, marginBottom: errors.subject ? 0 : 10 }} onFocus={focus} onBlur={blur} />
+                {errors.subject && <div style={errStyle}>{errors.subject}</div>}
+                <textarea name="message" value={form.message} onChange={onChange} placeholder="Melding" rows={4} style={{ ...(errors.message ? inpErr : inp), marginTop: errors.subject ? 6 : 0, marginBottom: errors.message ? 0 : 10, resize: 'none' }} onFocus={focus} onBlur={blur} />
+                {errors.message && <div style={errStyle}>{errors.message}</div>}
+                <label htmlFor="cv-upload" style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', boxSizing: 'border-box', background: 'rgba(255,255,255,0.06)', border: `1px solid ${cv ? AMBER : 'rgba(255,255,255,0.12)'}`, borderRadius: 7, padding: '11px 15px', marginTop: errors.message ? 6 : 0, marginBottom: 14, cursor: 'pointer', transition: 'border-color 0.2s' }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={cv ? AMBER : 'rgba(236,230,212,0.4)'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                     <polyline points="17 8 12 3 7 8"/>
@@ -631,16 +693,16 @@ function FinalCTA() {
                   <span style={{ fontSize: 13, color: cv ? CREAM : 'rgba(236,230,212,0.4)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {cv ? cv.name : 'Last opp CV (valgfritt)'}
                   </span>
-                  {cv && (
-                    <span onClick={e => { e.preventDefault(); setCv(null) }} style={{ fontSize: 12, color: 'rgba(236,230,212,0.35)', cursor: 'pointer', flexShrink: 0 }}>✕</span>
-                  )}
+                  {cv && <span onClick={e => { e.preventDefault(); setCv(null) }} style={{ fontSize: 12, color: 'rgba(236,230,212,0.35)', cursor: 'pointer', flexShrink: 0 }}>✕</span>}
                   <input id="cv-upload" type="file" accept=".pdf,.doc,.docx" onChange={onCvChange} style={{ display: 'none' }} />
                 </label>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 9, marginBottom: 20 }}>
-                  <input type="checkbox" id="consent" name="consent" checked={form.consent} onChange={onChange} required style={{ marginTop: 2, accentColor: AMBER, cursor: 'pointer' }} />
-                  <label htmlFor="consent" style={{ fontSize: 12, color: 'rgba(236,230,212,0.4)', cursor: 'pointer', lineHeight: 1.55 }}>Jeg samtykker til behandling av personopplysninger</label>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 9, marginBottom: errors.consent ? 4 : 20 }}>
+                  <input type="checkbox" id="consent" name="consent" checked={form.consent} onChange={onChange} style={{ marginTop: 2, accentColor: AMBER, cursor: 'pointer' }} />
+                  <label htmlFor="consent" style={{ fontSize: 12, color: errors.consent ? '#f87171' : 'rgba(236,230,212,0.4)', cursor: 'pointer', lineHeight: 1.55 }}>Jeg samtykker til behandling av personopplysninger</label>
                 </div>
-                <BtnAmber onClick={onSubmit}>Send melding</BtnAmber>
+                {errors.consent && <div style={{ ...errStyle, marginBottom: 16 }}>{errors.consent}</div>}
+                {serverErr && <div style={{ fontSize: 12, color: '#f87171', marginBottom: 14 }}>{serverErr}</div>}
+                <BtnAmber onClick={onSubmit}>{loading ? 'Sender…' : 'Send melding'}</BtnAmber>
               </form>
             )}
           </FadeUp>
