@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'Vintas <noreply@vintas.no>',
-        to: ['patrik@fx-dial.pro'],
+        to: ['patrik@vintas.no'],
         reply_to: email,
         subject: `Ny henvendelse: ${esc(subject)}`,
         html: `
@@ -36,24 +36,24 @@ export default async function handler(req, res) {
               <h2 style="color:#141410;margin:0 0 24px;font-size:20px">Ny henvendelse fra vintas.no</h2>
               <table style="width:100%;border-collapse:collapse">
                 <tr style="border-bottom:1px solid #f0ece2">
-                  <td style="padding:10px 0;color:#8a8470;width:130px;font-size:13px">Fornavn</td>
+                  <td style="padding:10px 0;color:#8a8470;width:130px;font-size:13px">First name</td>
                   <td style="padding:10px 0;color:#141410;font-size:14px">${esc(firstName)}</td>
                 </tr>
                 <tr style="border-bottom:1px solid #f0ece2">
-                  <td style="padding:10px 0;color:#8a8470;font-size:13px">Etternavn</td>
+                  <td style="padding:10px 0;color:#8a8470;font-size:13px">Last name</td>
                   <td style="padding:10px 0;color:#141410;font-size:14px">${esc(lastName)}</td>
                 </tr>
                 <tr style="border-bottom:1px solid #f0ece2">
-                  <td style="padding:10px 0;color:#8a8470;font-size:13px">E-post</td>
+                  <td style="padding:10px 0;color:#8a8470;font-size:13px">Email</td>
                   <td style="padding:10px 0;font-size:14px"><a href="mailto:${esc(email)}" style="color:#fcaa2d">${esc(email)}</a></td>
                 </tr>
                 <tr style="border-bottom:1px solid #f0ece2">
-                  <td style="padding:10px 0;color:#8a8470;font-size:13px">Emne</td>
+                  <td style="padding:10px 0;color:#8a8470;font-size:13px">Subject</td>
                   <td style="padding:10px 0;color:#141410;font-size:14px">${esc(subject)}</td>
                 </tr>
               </table>
               <div style="margin-top:20px">
-                <p style="color:#8a8470;font-size:13px;margin:0 0 8px">Melding</p>
+                <p style="color:#8a8470;font-size:13px;margin:0 0 8px">Message</p>
                 <p style="color:#4a4840;line-height:1.75;font-size:14px;white-space:pre-wrap;margin:0;padding:16px;background:#f9f7f2;border-radius:6px">${esc(message)}</p>
               </div>
               ${cv ? '<p style="margin-top:16px;color:#8a8470;font-size:13px">📎 CV vedlagt.</p>' : ''}
