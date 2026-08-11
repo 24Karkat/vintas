@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'Vintas <noreply@vintas.no>',
-        to: ['patrik@vintas.no'],
+        to: ['kristyna@vintas.no'],
         reply_to: email,
         subject: `Ny henvendelse: ${esc(subject)}`,
         html: `
