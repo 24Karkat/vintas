@@ -123,8 +123,8 @@ function Navbar() {
     { label: 'Om oss', href: '#o-nas' },
     { label: 'Tjenester', href: '#sluzby' },
     { label: 'Slik jobber vi', href: '#how-we-work' },
-    { label: 'Priser', href: '#cenik' },
     { label: 'Karriere', href: '#jobb' },
+    { label: 'Priser', href: '#cenik' },
     { label: 'Kontakt', href: '#kontakt' },
   ]
   return (
